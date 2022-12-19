@@ -38,8 +38,8 @@ DataFrame mgrs_to_latlng(std::vector < std::string > MGRS, bool degrees = true,
       lat_vec[i] = NA_REAL;
       lng_vec[i] = NA_REAL;
     } else {
-      lat_vec[i] = degrees ? lat * 180.0/PI : lat;
-      lng_vec[i] = degrees ? lng * 180.0/PI : lng;
+      lat_vec[i] = degrees ? lat * 180.0/M_PI : lat;
+      lng_vec[i] = degrees ? lng * 180.0/M_PI : lng;
     }
 
   }
@@ -86,8 +86,8 @@ String latlng_to_mgrs(double latitude, double longitude,
                       bool degrees = true, int precision = 5) {
 
   if (degrees) {
-    latitude *= PI / 180.0;
-    longitude *= PI / 180.0;
+    latitude *= M_PI / 180.0;
+    longitude *= M_PI / 180.0;
   }
 
   char buf[80];
@@ -322,8 +322,8 @@ NumericVector ups_to_latlng(std::string hemisphere,
     );
   } else {
     coords = NumericVector::create(
-      _["lat"] = degrees ? lat * 180.0/PI : lat,
-      _["lng"] = degrees ? lng * 180.0/PI : lng
+      _["lat"] = degrees ? lat * 180.0/M_PI : lat,
+      _["lng"] = degrees ? lng * 180.0/M_PI : lng
     );
   }
 
@@ -361,8 +361,8 @@ NumericVector utm_to_latlng(long zone, std::string hemisphere,
     );
   } else {
     coords = NumericVector::create(
-      _["lat"] = degrees ? lat * 180.0/PI : lat,
-      _["lng"] = degrees ? lng * 180.0/PI : lng
+      _["lat"] = degrees ? lat * 180.0/M_PI : lat,
+      _["lng"] = degrees ? lng * 180.0/M_PI : lng
     );
   }
 
